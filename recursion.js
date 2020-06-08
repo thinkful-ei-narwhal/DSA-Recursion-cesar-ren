@@ -91,3 +91,45 @@ const binaryRepresentation = function (num) {
   return binaryRepresentation(Math.floor(num/2))+`${num%2}`;
 };
 console.log(binaryRepresentation(75));
+
+//8.Find a way out of the maze
+let mySmallMaze = [
+  [' ', ' ', ' '],
+  [' ', '*', ' '],
+  [' ', ' ', 'e']
+];
+  
+let maze = [
+  [' ', ' ', ' ', '*', ' ', ' ', ' '],
+  ['*', '*', ' ', '*', ' ', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', '*', '*', '*', '*', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', 'e']
+];
+  
+const exitMaze = function (maze, row, colum, direction, path) {
+  path +=direction;
+
+  if (maze[row][colum]==='e'){
+    console.log(path);
+  }
+  if(maze[row][colum]=== ' '|| maze[row][colum] === 'r'){
+    return; 
+  }
+  if (maze.length===0){
+    console.log('no maze given');
+  }
+  if (row===maze.length){
+    return;
+  }
+  if (row<0){
+    return;
+  }
+
+  exitMaze(maze,row+1,colum,'R', path);
+  exitMaze(maze,row,colum+1,'D', path);
+  exitMaze(maze,row-1,colum,'L', path);
+  exitMaze(maze,row,colum-1,'U', path);
+};
+    
+exitMaze(mySmallMaze, 0 ,0);
