@@ -36,8 +36,12 @@ const reverseString= function(word) {
 console.log(reverseString('the world'));
 
 //4. nth Triangular Number
-const tringularNumber = function (base, exponent) {
+const tringularNumber = function (num) {
+  if(num<=1){
+    return num;
+  }
 
+  return num + tringularNumber(num-1);
 };
   
-console.log(tringularNumber());
+console.log(tringularNumber(3));
