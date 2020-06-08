@@ -26,22 +26,36 @@ const powerCalculator = function (base, exponent) {
 console.log(powerCalculator(10, 2));
 
 //3. Reverse String
-const reverseString= function(word) {
-  if(word===''){
-    return  '';
+const reverseString = function (word) {
+  if (word === '') {
+    return '';
   }
-  return word.charAt(word.length-1)+ reverseString(word.slice(0,-1));
+  return word.charAt(word.length - 1) + reverseString(word.slice(0, -1));
 };
 
 console.log(reverseString('the world'));
 
 //4. nth Triangular Number
 const tringularNumber = function (num) {
-  if(num<=1){
+  if (num <= 1) {
     return num;
   }
 
-  return num + tringularNumber(num-1);
+  return num + tringularNumber(num - 1);
 };
-  
+
 console.log(tringularNumber(3));
+
+//5. String Splitter
+const stringSplit = function (str) {
+  if (str === '') {
+    return [];
+  }
+  if (str[0] === '/') {
+    return [...stringSplit(str.slice(1))];
+  }
+
+  return [str[0] + stringSplit(str.slice(1))];
+};
+
+console.log(stringSplit('02/20/2020'));
