@@ -52,10 +52,20 @@ const stringSplit = function (str) {
     return [];
   }
   if (str[0] === '/') {
-    return [...stringSplit(str.slice(1))];
+    return [stringSplit(str.slice(1))];
   }
 
   return [str[0] + stringSplit(str.slice(1))];
 };
 
 console.log(stringSplit('02/20/2020'));
+
+//6. Fibonacci
+const Fibonacci = function (num) {
+  if(num<=1){
+    return num;
+  }
+    
+  return Fibonacci(num-2) + Fibonacci(num-1);
+};
+console.log(Fibonacci(7));
