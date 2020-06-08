@@ -80,3 +80,14 @@ const factorial = function (num) {
 };
 
 console.log(factorial(5));
+
+
+//12. Binary Representation
+const binaryRepresentation = function (num) {
+  if(num<=0){
+    return '';
+  }
+  
+  return binaryRepresentation(Math.floor(num/2))+`${num%2}`;
+};
+console.log(binaryRepresentation(75));
