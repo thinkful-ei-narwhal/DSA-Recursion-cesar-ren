@@ -62,10 +62,21 @@ console.log(stringSplit('02/20/2020'));
 
 //6. Fibonacci
 const Fibonacci = function (num) {
-  if(num<=1){
+  if (num <= 1) {
     return num;
   }
-    
-  return Fibonacci(num-2) + Fibonacci(num-1);
+
+  return Fibonacci(num - 2) + Fibonacci(num - 1);
 };
 console.log(Fibonacci(7));
+
+//7. Factorial
+
+const factorial = function (num) {
+  if (num === 0) {
+    return 1;
+  }
+  return num * factorial(num - 1);
+};
+
+console.log(factorial(5));
