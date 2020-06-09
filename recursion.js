@@ -112,3 +112,90 @@ const Anagrams = function (word) {
 };
 
 console.log(Anagrams('east'));
+
+
+//8.Find a way out of the maze
+let mySmallMaze = [
+  [' ', ' ', ' '],
+  [' ', '*', ' '],
+  [' ', ' ', 'e'],
+];
+
+let maze = [
+  [' ', ' ', ' ', '*', ' ', ' ', ' '],
+  ['*', '*', ' ', '*', ' ', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', '*', '*', '*', '*', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', 'e'],
+];
+
+const exitMaze = function (maze, row, colum, direction, path) {
+  if(!processing){
+    return;
+  }
+  if (maze.length===0){
+    console.log('no maze given');
+  }
+  
+  path += direction;
+
+  if (row === maze.length || colum=== maze[0].length) {
+    return;
+  }
+
+  if (row<0 || colum<0){
+    return;
+  }
+
+  if (maze[row][colum]==='e'){
+    console.log('path is '+path);
+    processing=false;
+  }
+
+  if (maze[row][colum] === ' ') {
+    maze[row][colum]='r';
+    exitMaze(maze,row+1,colum,'D', path);
+    exitMaze(maze,row,colum+1,'R', path);
+    exitMaze(maze,row-1,colum,'U', path);
+    exitMaze(maze,row,colum-1,'L', path);
+  }
+
+};  
+
+
+//9. Find ALL the ways out of the maze
+const exitsMaze = function (maze, row, colum, direction, path) {
+  if (maze.length===0){
+    console.log('no maze given');
+  }
+  
+  path += direction;
+
+  if (row === maze.length || colum=== maze[0].length) {
+    return;
+  }
+
+  if (row<0 || colum<0){
+    return;
+  }
+
+  if (maze[row][colum]==='e'){
+    console.log('path is '+path);
+  }
+
+  if (maze[row][colum] === ' ') {
+    maze[row][colum]='r';
+    exitsMaze(maze,row+1,colum,'D', path);
+    exitsMaze(maze,row,colum+1,'R', path);
+    exitsMaze(maze,row-1,colum,'U', path);
+    exitsMaze(maze,row,colum-1,'L', path);
+  }
+
+};  
+
+let processing= true;
+exitMaze(mySmallMaze, 0 ,0, '','');
+exitsMaze(maze, 0 ,0, '','');
+
+
+
