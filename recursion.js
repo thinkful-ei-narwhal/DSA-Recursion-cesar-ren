@@ -47,15 +47,15 @@ const tringularNumber = function (num) {
 console.log(tringularNumber(3));
 
 //5. String Splitter
-const stringSplit = function (str) {
+const stringSplit = function (str, val = '') {
   if (str === '') {
-    return [];
+    return [val];
   }
   if (str[0] === '/') {
-    return [stringSplit(str.slice(1))];
+    return [val, ...stringSplit(str.slice(1), (val = ''))];
   }
-
-  return [str[0] + stringSplit(str.slice(1))];
+  val += str[0];
+  return [...stringSplit(str.slice(1), val)];
 };
 
 console.log(stringSplit('02/20/2020'));
